@@ -22,7 +22,7 @@ Entra al directorio del proyecto, dentro del repositorio tendrás `tres carpetas
 #### DOCS - `LEER CON ATENCIÓN`
 En esta carpeta encontrarás `ejercicios de algoritmos y estructuras de datos en JavaScript`, con sus respectivos test, también tendrás un readme.md con las instrucciones del mismo.
 
-Además tendrás un readme `consultas.md` donde tendrás una lista de ejercicios SQL que deberás resolver.
+Además tendrás un readme donde tendrás una lista de ejercicios SQL que deberás resolver.
 
 #### API
 
@@ -69,7 +69,7 @@ Desarrolla la aplicación siguiendo las especificaciones proporcionadas. Asegúr
 - Utiliza React Context o Redux para el estado global de la aplicación.
 - Recomendamos utilizar UUID para la generación de indentificadores únicos de los registros de los usuarios.
 - Se debe respetar el diseño en Figma que se les adjunto en la sección de [recursos](#sources).
-- Se debe utilizar la librería antd y css en caso de ser necesario.
+- Se debe utilizar la librería antd y css/less/sass en caso de ser necesario.
 - Recomendamos reutilizar la mayor cantidad de componentes posibles, y evitar el codigo repetitivo.
 
 ## 4. Requerimientos del software
