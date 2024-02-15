@@ -8,13 +8,12 @@ En este proyecto, te desafiamos a construir un CRUD de usuarios utilizando React
 
 ## Instrucciones
 
-### 1. Clonar el Repositorio
+### 1. Fork del Repositorio
 
-Clona este repositorio en tu máquina local utilizando el siguiente comando:
+Haz un fork de este repositorio haciendo clic en el botón "Fork" en la esquina superior derecha de esta página. Esto creará una copia del repositorio en tu cuenta de GitHub.
 
-```bash
-git clone https://github.com/
-```
+Luego deberás seguir las instrucciones de github, para clonar el repositorio en tu maquina de manera local.
+
 
 ### 2. Inicializar el proyecto
 
@@ -22,6 +21,8 @@ Entra al directorio del proyecto, dentro del repositorio tendrás `tres carpetas
 
 #### DOCS - `LEER CON ATENCIÓN`
 En esta carpeta encontrarás `ejercicios de algoritmos y estructuras de datos en JavaScript`, con sus respectivos test, también tendrás un readme.md con las instrucciones del mismo.
+
+Además tendrás un readme `consultas.md` donde tendrás una lista de ejercicios SQL que deberás resolver.
 
 #### API
 
