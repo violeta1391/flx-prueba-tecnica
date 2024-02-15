@@ -22,7 +22,7 @@ Entra al directorio del proyecto, dentro del repositorio tendrás `tres carpetas
 #### DOCS - `LEER CON ATENCIÓN`
 En esta carpeta encontrarás `ejercicios de algoritmos y estructuras de datos en JavaScript`, con sus respectivos test, también tendrás un readme.md con las instrucciones del mismo.
 
-Además tendrás un readme donde tendrás una lista de ejercicios SQL que deberás resolver.
+Además tendrás tendrás una lista de `consultas SQL`que deberás resolver.
 
 #### API
 
