@@ -17,7 +17,7 @@ Luego deberás seguir las instrucciones de github, para clonar el repositorio en
 
 ### 2. Inicializar el proyecto
 
-Entra al directorio del proyecto, dentro del repositorio tendrás `tres carpetas`:
+Entra al directorio del proyecto, dentro del repositorio tendrás `dos carpetas`:
 
 #### DOCS - `LEER CON ATENCIÓN`
 En esta carpeta encontrarás `ejercicios de algoritmos y estructuras de datos en JavaScript`, con sus respectivos test, también tendrás un readme.md con las instrucciones del mismo.
@@ -40,14 +40,16 @@ npm run server
 Por defecto se inicializará en el puerto 4000.
 
 #### CLIENT
-Dentro de esta carpeta deberá estar el frontend en React. Podrás usar el comando que prefieras para inicializar el proyecto. 
+Dentro del mismo repositorio deberas crear una carpeta llamada `client`. 
+Dentro de la misma deberá estar el frontend en React. Podrás usar el comando que prefieras para inicializar el proyecto. 
 Te dejamos una sugerencia.
 
 ```bash
-cd ./client
-npx create-react-app .
+npx create-react-app client
 npm start
 ```
+Tambien podrás usar otras alternativas como `vite` o similares. (opcional)
+
 Deberas instalar la librería `antd`, donde tendrás muchos de los componentes que necesitaras para realizar el CRUD. Si nunca la utilizaste podes consultar la documentación que dejamos en la sección de [recursos](#sources).
 
 ```bash
