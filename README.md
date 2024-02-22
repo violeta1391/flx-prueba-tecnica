@@ -40,7 +40,7 @@ npm run server
 Por defecto se inicializará en el puerto 4000.
 
 #### CLIENT
-Dentro del mismo repositorio deberas crear una carpeta llamada `client`. 
+Dentro del repositorio deberas crear una carpeta llamada `client`. 
 Dentro de la misma deberá estar el frontend en React. Podrás usar el comando que prefieras para inicializar el proyecto. 
 Te dejamos una sugerencia.
 
