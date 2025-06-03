@@ -1,0 +1,23 @@
+.header-flexxus {
+  background-color: #e5e5e5;
+  display: flex;
+  align-items: center;
+  height: auto;
+  justify-content: flex-start;
+
+}
+.header-logo {
+   max-width: 100%;
+  object-fit: contain;
+  margin: 0.7rem .5rem 0.7rem 0rem;
+}
+@media (max-width: 600px) {
+  .header-logo {
+    width: 120px;
+    margin-top: 10px;
+  }
+  .header-flexxus {
+    padding: 0.5rem;
+    justify-content: center;
+  }
+}
