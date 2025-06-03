@@ -98,6 +98,7 @@ git push origin main
 ```
 
 ▪ Se valorará el despliegue de la aplicación en Vercel o en alguna otra plataforma de hosting.
+
 ¡Eso es todo! Esperamos que disfrutes trabajando en este proyecto y estamos ansiosos por ver tu solución. Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos.
 
 <a id="sources"></a>
