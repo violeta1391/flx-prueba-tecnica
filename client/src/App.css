@@ -9,7 +9,7 @@
 .header-logo {
    max-width: 100%;
   object-fit: contain;
-  margin: 0.7rem .5rem 0.7rem 0rem;
+  margin: 1rem .5rem 1rem 0rem;
 }
 @media (max-width: 600px) {
   .header-logo {

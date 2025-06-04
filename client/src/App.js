@@ -1,31 +1,43 @@
-import { Breadcrumb, Layout, theme } from 'antd';
-import HeaderFlexxus from './components/HeaderFlexxus'
+import { Breadcrumb, Layout} from 'antd';
+import { BrowserRouter as Router, Routes, Route, Navigate, Link, useLocation } from 'react-router-dom';
+import HeaderFlexxus from './components/HeaderFlexxus';
+import UserListPage from './pages/UserListPage';
 
 const { Content } = Layout;
-const App = () => {
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
+
+function BreadcrumbNav() {
+  const location = useLocation();
   return (
-    <>
+    <Breadcrumb style={{ margin: '16px 0' }}>
+      <Breadcrumb.Item>
+        <Link to="/usuarios/listado">
+          Usuarios
+        </Link>
+      </Breadcrumb.Item>
+      <Breadcrumb.Item>
+        <Link
+          to="/usuarios/listado"
+          style={{ fontWeight: location.pathname === '/usuarios/listado' ? 'bold' : 'normal' }}
+        >
+          Listado de Usuarios
+        </Link>
+      </Breadcrumb.Item>
+    </Breadcrumb>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
       <HeaderFlexxus />
       <Content style={{ padding: '0 48px' }}>
-        <Breadcrumb
-          style={{ margin: '16px 0' }}
-          items={[{ title: 'Usuarios' }, { title: 'Listado de Usuarios' }]}
-        />
-        <div
-          style={{
-            background: colorBgContainer,
-            minHeight: 280,
-            padding: 24,
-            borderRadius: borderRadiusLG,
-          }}
-        >
-          Content
-        </div>
+        <BreadcrumbNav />
+          <Routes>
+            <Route path="/" element={<Navigate to="/usuarios/listado" replace />} />
+            <Route path="/usuarios" element={<Navigate to="/usuarios/listado" replace />} />
+            <Route path="/usuarios/listado" element={<UserListPage />} />
+          </Routes>    
       </Content>
-    </>
+    </Router>
   );
-};
-export default App;
+}
