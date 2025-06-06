@@ -8,16 +8,16 @@ function ConfirmationModal({
   onCancel,
   confirmText = "Confirmar",
   cancelText = "Cancelar",
-  confirmButtonProps = { type: "primary", danger: true }, 
+  confirmButtonProps = { type: "primary", danger: true },
   cancelButtonProps = {},
-  loading = false, 
+  loading = false,
 }) {
   return (
     <Modal
       title={title}
       open={visible}
-      onOk={onConfirm} 
-      onCancel={onCancel} 
+      onOk={onConfirm}
+      onCancel={onCancel}
       footer={[
         <Button key="back" onClick={onCancel} {...cancelButtonProps}>
           {cancelText}
