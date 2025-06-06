@@ -4,7 +4,7 @@
 */
 
 function reverseString(str) {
-  // Tu solución acá  
+  return str.split('').reverse().join('');
 }
 
 /*
@@ -12,8 +12,11 @@ function reverseString(str) {
   Escribe una función isPalindrome que tome una cadena como entrada 
   y devuelva true si la cadena es un palíndromo, y false en caso contrario.
 */
+
 function isPalindrome(str) {
-  // Tu solución acá
+  const cleanedStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const reversedStr = cleanedStr.split('').reverse().join('');
+  return cleanedStr === reversedStr;
 }
 
 /*
@@ -30,7 +33,23 @@ function isPalindrome(str) {
 */
 
 function closestPair(arr) {
-  // Tu solución acá
+  if (arr.length < 2) {
+    throw new Error("El array debe contener al menos dos elementos.");
+  }
+
+  arr.sort((a, b) => a - b);
+
+  let minDiff = Infinity;
+  let closestPair = [];
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    const diff = Math.abs(arr[i + 1] - arr[i]);
+    if (diff < minDiff) {
+      minDiff = diff;
+      closestPair = [arr[i], arr[i + 1]];
+    }
+  }
+  return closestPair;
 }
 
 
@@ -67,12 +86,50 @@ function closestPair(arr) {
 */
 
 class Calculator {
-  // Tu solución acá
+  constructor() {
+    this.lastResult = 0;
+  }
+
+  _updateLastResult(result) {
+    this.lastResult = result;
+    return result;
+  }
+
+  add(a, b) {
+    return this._updateLastResult(a + b);
+  }
+
+  subtract(a, b) {
+    return this._updateLastResult(a - b);
+  }
+
+  multiply(a, b) {
+    return this._updateLastResult(a * b);
+  }
+
+  divide(a, b) {
+    if (b === 0) {
+      throw new Error('Division by zero is not allowed');
+    }
+    return this._updateLastResult(a / b);
+  }
+
+  getLastResult() {
+    return this.lastResult;
+  }
 }
+
+Calculator.prototype.exponentiate = function (base, exponent) {
+  if (exponent < 0) {
+    throw new Error('Exponentiation with negative exponent is not allowed');
+  }
+  const result = Math.pow(base, exponent);
+  return this._updateLastResult(result);
+};
 
 module.exports = {
   closestPair,
   isPalindrome,
   reverseString,
   Calculator,
-}
+};
