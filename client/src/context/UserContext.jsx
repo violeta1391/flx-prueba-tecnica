@@ -2,7 +2,6 @@ import { createContext, useContext, useState, useEffect, useMemo, useCallback } 
 import { readAllUsers, performFetchAllUsers, deleteUser } from '../services/userService';
 import useNotifications from '../components/hooks/useNotifications';
 
-
 const UserContext = createContext();
 export const UserProvider = ({ children }) => {
     const allUsersData = readAllUsers();
