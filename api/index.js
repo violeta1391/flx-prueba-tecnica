@@ -52,24 +52,24 @@ module.exports = async (req, res) => {
                 } else {
                     res.status(404).send('Recurso no encontrado.');
                 }
+                return;
             } else if (parts.length === 3) {
-                const urlParts = url.split('?');
-                if (urlParts.length > 1) {
-                    const queryParams = new URLSearchParams(urlParts[1]);
+                const queryString = url.split('?')[1];
+                if (queryString) {
+                    const queryParams = new URLSearchParams(queryString);
                     const email = queryParams.get('email');
 
                     if (email && resourceName === 'users') {
                         const filteredUsers = data[resourceName].filter(user => user.email === email);
                         res.status(200).json(filteredUsers);
-                    } else {
-                        res.status(200).json(data[resourceName]);
+                        return;
                     }
-                } else {
-                    res.status(200).json(data[resourceName]);
                 }
-            } else {
-                res.status(404).send('Ruta de API GET no encontrada.');
+                res.status(200).json(data[resourceName]);
+                return;
             }
+            res.status(404).send('Ruta de API GET no encontrada.');
+            return;
         } else if (req.method === 'POST') {
             try {
                 const body = await getRequestBody(req);
@@ -81,10 +81,12 @@ module.exports = async (req, res) => {
                 data[resourceName].push(newItem);
 
                 res.status(201).json(newItem);
+                return;
 
             } catch (error) {
                 console.error('Error al procesar POST:', error);
                 res.status(400).send('Solicitud POST inválida.');
+                return;
             }
         } else if (req.method === 'PUT' || req.method === 'PATCH') {
             if (parts.length === 4) {
@@ -103,12 +105,15 @@ module.exports = async (req, res) => {
                     } else {
                         res.status(404).send('Recurso para actualizar no encontrado.');
                     }
+                    return;
                 } catch (error) {
                     console.error('Error al procesar PUT/PATCH:', error);
                     res.status(400).send('Solicitud PUT/PATCH inválida.');
+                    return;
                 }
             } else {
                 res.status(404).send('Ruta de API PUT/PATCH no encontrada (falta ID).');
+                return;
             }
         } else if (req.method === 'DELETE') {
             if (parts.length === 4) {
@@ -125,15 +130,20 @@ module.exports = async (req, res) => {
                 } else {
                     res.status(404).send('Recurso para eliminar no encontrado.');
                 }
+                return;
             } else {
                 res.status(404).send('Ruta de API DELETE no encontrada (falta ID).');
+                return;
             }
         } else {
             res.status(405).send('Método no permitido para este recurso.');
+            return;
         }
     } else if (url === '/api' || url === '/api/') {
         res.status(200).json(data);
+        return;
     } else {
         res.status(404).send('Ruta de API no encontrada.');
+        return;
     }
 };
