@@ -1,8 +1,10 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
-import { readAllUsers, performFetchAllUsers, deleteUser } from '../../services/userService';
-import useNotifications from './useNotifications';
+import { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
+import { readAllUsers, performFetchAllUsers, deleteUser } from '../services/userService';
+import useNotifications from '../components/hooks/useNotifications';
 
-const useUserManagement = () => {
+
+const UserContext = createContext();
+export const UserProvider = ({ children }) => {
     const allUsersData = readAllUsers();
     const [users, setUsers] = useState(allUsersData);
     const [searchTerm, setSearchTerm] = useState('');
@@ -134,7 +136,15 @@ const useUserManagement = () => {
         }
     }, [editingUser, showNotification]);
 
-    return {
+    const closeUserFormModal = useCallback(() => {
+        setIsModalOpen(false);
+    }, []);
+
+    const closeNotificationModal = useCallback(() => {
+        closeNotification();
+    }, [closeNotification]);
+
+    const contextValue = useMemo(() => ({
         // Estados
         searchTerm,
         statusFilter,
@@ -156,9 +166,29 @@ const useUserManagement = () => {
         handleConfirmDelete,
         handleCancelDelete,
         handleUserSubmit,
-        closeUserFormModal: () => setIsModalOpen(false),
-        closeNotificationModal: closeNotification,
-    };
+        closeUserFormModal,
+        closeNotificationModal,
+        setUsers, 
+    }), [
+        searchTerm, statusFilter, isFiltering, isModalOpen, editingUser,
+        isConfirmDeleteModalVisible, userToDelete, isDeleting,
+        isNotificationModalVisible, notificationModalConfig, displayedUsers,
+        handleSearchChange, handleStatusChange, handleAddUserClick, handleEditUser,
+        handleDeleteUser, handleConfirmDelete, handleCancelDelete, handleUserSubmit,
+        closeUserFormModal, closeNotificationModal,
+    ]);
+
+    return (
+        <UserContext.Provider value={contextValue}>
+            {children}
+        </UserContext.Provider>
+    );
 };
 
-export default useUserManagement;
+export const useUser = () => {
+    const context = useContext(UserContext);
+    if (!context) {
+        throw new Error('useUser debe ser usado dentro de un UserProvider');
+    }
+    return context;
+};

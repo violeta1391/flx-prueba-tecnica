@@ -9,35 +9,66 @@ function UserActions({
   onSearchChange,
   onStatusChange,
   onAddUserClick,
-  loading, 
+  loading,
 }) {
   return (
-    <Row justify="space-between" align="middle" style={{ marginBottom: '20px' }}>
-      <Col>
-        <Space>
+    <Row
+      justify="space-between"
+      align="middle"
+      wrap={true}
+      style={{ marginBottom: '2.5rem' }}
+      gutter={[16, 16]}
+    >
+      <Col
+        xs={24} 
+        sm={16}
+        md={14}
+        lg={12}
+      >
+        <Space
+          wrap={true}
+          justify="start"
+          style={{ width: '100%' }}
+        >
           <Search
             placeholder="Buscar por nombre, apellido o ID..."
             value={searchTerm}
             onChange={(e) => onSearchChange(e.target.value)}
-            onSearch={(value) => onSearchChange(value)} 
-            style={{ width: 250 }}
-            loading={loading}   
+            onSearch={(value) => onSearchChange(value)}
+            style={{ flexGrow: 1, minWidth: '200px' }}
+            loading={loading}
             allowClear
           />
           <Select
             value={statusFilter}
             onChange={onStatusChange}
-            style={{ width: 150 }}
-            disabled={loading} 
+            disabled={loading}
+            style={{ maxWidth: '180px', width: '100%' }} 
           >
-            <Option value="all">Todos los estados</Option>
+            <Option value="all">Filtrar por estado</Option>
             <Option value="active">Activo</Option>
             <Option value="inactive">Inactivo</Option>
           </Select>
         </Space>
       </Col>
-      <Col>
-        <Button type="primary" onClick={onAddUserClick} disabled={loading}>
+      <Col
+        xs={24} 
+        sm={8}
+        md={10}
+        lg={12}
+        style={{
+          textAlign: 'right', 
+        }}
+      >
+        <Button
+          type="primary"
+          onClick={onAddUserClick}
+          disabled={loading}
+          style={{
+            width: '100%',
+            maxWidth: '200px', 
+          }}
+        >
           Agregar Usuario
         </Button>
       </Col>

@@ -6,7 +6,7 @@ import UserTable from '../components/user/UserTable';
 import UserFormModal from '../components/user/UserFormModal';
 import ConfirmationModal from '../components/ui/ConfirmationModal';
 import NotificationModal from '../components/ui/NotificationModal';
-import useUserManagement from '../components/hooks/useUserManagement';
+import { useUser } from '../context/UserContext'; 
 
 function UsersDataContent() {
   const {
@@ -31,7 +31,7 @@ function UsersDataContent() {
     handleUserSubmit,
     closeUserFormModal,
     closeNotificationModal,
-  } = useUserManagement();
+  } = useUser(); 
 
   return (
     <>
